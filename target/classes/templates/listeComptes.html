@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Comptes</title>
+	<link rel="stylesheet" type="text/css"
+			  	 href="../static/css/bootstrap.min.css"
+			  	th:href="@{/css/bootstrap.min.css}" />
+			  	<link rel="stylesheet" type="text/css"
+			  	href="../static/css/myStyle.css"
+			  	th:href="@{/css/myStyle.css}" /></head>
+<body>
+    <div class="container">
+        <h1>Liste des Comptes</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Code Compte</th>
+                    <th>Solde</th>
+					<th>Propriétaire</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Utilisation de Thymeleaf pour itérer à travers les comptes -->
+                <tr th:each="compte : ${comptes}">
+                    <td th:text="${compte.codeCompte}"></td>
+                    <td th:text="${compte.solde}"></td>
+					<td th:text="${compte.client.nom}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

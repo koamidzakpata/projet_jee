@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Création Compte Épargne</title>
+	<link rel="stylesheet" type="text/css"
+			  	 href="../static/css/bootstrap.min.css"
+			  	th:href="@{/css/bootstrap.min.css}" />
+			  	<link rel="stylesheet" type="text/css"
+			  	href="../static/css/myStyle.css"
+			  	th:href="@{/css/myStyle.css}" /></head>
+<body>
+<div class="container">
+    <h1>Création Compte Épargne</h1>
+    <form action="/saveCompteEpargne" method="post" th:object="${compteEpargne}">
+        <div class="form-group">
+            <label for="codeCompte">Code Compte</label>
+            <input type="text" class="form-control" id="codeCompte" name="codeCompte" th:field="*{codeCompte}">
+        </div>
+        <div class="form-group">
+            <label for="solde">Solde</label>
+            <input type="number" class="form-control" id="solde" name="solde" th:field="*{solde}">
+        </div>
+        <div class="form-group">
+            <label for="taux">Taux</label>
+            <input type="number" class="form-control" id="taux" name="taux" step="0.01" th:field="*{taux}">
+        </div>
+        <div class="form-group">
+            <label for="client">Client</label>
+            <select class="form-control" id="client" name="client.code" th:field="*{client.code}">
+                <option th:each="client : ${clients}" th:value="${client.code}" th:text="${client.nom}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Créer Compte Épargne</button>
+    </form>
+</div>
+</body>
+</html>
